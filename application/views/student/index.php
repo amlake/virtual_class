@@ -13,6 +13,6 @@
 	<?php endforeach ?>
 </ul>
 
-<p><a href="create">add new student </a></p>
+<p><a href="<?php echo base_url();?>index.php/student/create">add new student </a></p>
 <p><a href="<?php echo base_url();?>index.php/">home</a> </p>
 </div>

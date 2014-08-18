@@ -50,3 +50,45 @@ ul.courses form input[type=text]{
     background: #FFF;
     border: 1px solid #d3d3d3;
 }
+
+ul.students{
+    list-style-type: none;
+    width: 525px;
+    margin: 0;
+    padding: 0;
+}
+ 
+ul.students li{
+    background: #eeeeee;
+    border: 1px solid #d3d3d3;
+    padding: 10px;
+    width: 200px;
+    height:100px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+ul.students h3{
+    margin: 0;
+    padding: 0px 0px 5px 0px;
+    font-size: 14px;
+}
+ 
+ul.students small{
+    display: block;
+}
+ 
+ul.students form fieldset{
+    border: 0px;
+}
+ 
+ul.students form label{
+    font-size: 12px;
+}
+ 
+ul.students form input[type=text]{
+    width: 18px;
+    background: #FFF;
+    border: 1px solid #d3d3d3;
+}

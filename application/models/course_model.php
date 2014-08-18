@@ -78,10 +78,6 @@ class Course_model extends CI_Model {
 	}
 	}
 
-	#public function get_dept_name($id) {
-	#
-	#}
-
 	public function delete_course($id) {
 		$this->db->delete('course', array('id' => $id));
 	}
