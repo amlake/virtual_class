@@ -13,12 +13,23 @@ class Student extends CI_Controller {
 
 	public function index()
 	{
-
 		$data['students'] = $this->student_model->get_students();
 		$data['title'] = 'students list';
+		$data['pagenum'] = 1;
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('student/index', $data);
+		$this->load->view('student/page', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function page($pagenum)
+	{
+		$data['students'] = $this->student_model->get_students($id=FALSE, $pagenum);
+		$data['title'] = 'students list';
+		$data['pagenum'] = $pagenum;
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('student/page', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -40,10 +51,11 @@ class Student extends CI_Controller {
 		redirect('student/view/'.$id);
 	}
 
-	public function enroll($student_id) 
+	public function enroll() 
 	{
 		$course_data = $this->input->post();
 		$course_id = $course_data['id'];
+		$student_id = $course_data['studentid'];
 		echo "student_id: ".$student_id;
 		echo "  course_id: ". $course_id;
 		$this->enrollment_model->enroll_student($student_id,$course_id);

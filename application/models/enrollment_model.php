@@ -20,7 +20,7 @@ class Enrollment_model extends CI_Model {
 
 	}
 
-	public function enrolled($student_id, $course_id) # boolean -- check to see whether a particular student is enrolled in a particular course
+	public function enrolled($student_id, $course_id) # boolean --  check to see whether a particular student is enrolled in a particular course
 	{
 
 	}

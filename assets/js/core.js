@@ -11,28 +11,25 @@ $(document).ready(function() {
 	    }
 	});
 
-
-	//below code is only relevant if we're in the student/view/<student_id> view
-	var baseurl = window.location.protocol + "//" + window.location.host + "/";
-	var pathArray = window.location.pathname.split( '/' );
-	var newPathname = "";
-	for (i = 0; i < pathArray.length-2; i++) {
-	  newPathname += "/";
-	  newPathname += pathArray[i];
-	}
-	newPathname += "/enroll/";
-	var newURL = baseurl + newPathname;
-	var studentid =  pathArray.length-1;
-	//
-
 	$('body').on('click', '.dropdown-menu li', function(e) {
-		$.post(newURL+studentid, {
+		var baseurl = window.location.protocol + "//" + window.location.host + "/";
+		var pathArray = window.location.pathname.split( '/' );
+		var newPathname = "";
+		for (i = 0; i < pathArray.length-2; i++) {
+		  newPathname += "/";
+		  newPathname += pathArray[i];
+		}
+		newPathname += "/enroll/";
+		var newURL = baseurl + newPathname;
+
+		$.post(newURL, {
 			 id: e.currentTarget.id,
-			 name: e.currentTarget.title
+			 studentid: e.currentTarget.title
 		},
-		function(result, status){
-				console.log("RESULT: " + result);
-				console.log("STATUS: " + status);
+		function(result){
+			$("#dropdownMenu1").addClass("alert alert-success");
+			$("#dropdownMenu1").text("Course added!");
+			console.log("RESULT: " + result);
 		})
     });
 });

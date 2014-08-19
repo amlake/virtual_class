@@ -6,11 +6,11 @@ class Course_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function get_courses($id=FALSE)
+	public function get_courses($id=FALSE,$pagenum=1)
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('course');
+			$query = $this->db->get('course',1,1*($pagenum-1));
 			$results = $query->result_array();
 			for ($i = 0; $i < count($results); ++$i) {
 			    #now, query `dept` table using dept_id to select corresponding dept_name for display

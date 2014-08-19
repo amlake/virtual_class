@@ -15,9 +15,21 @@ class Course extends CI_Controller {
 
 		$data['courses'] = $this->course_model->get_courses();
 		$data['title'] = 'courses list';
+		$data['pagenum'] = 1;
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('course/index', $data);
+		$this->load->view('course/page', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function page($pagenum)
+	{
+		$data['courses'] = $this->course_model->get_courses($id=FALSE, $pagenum);
+		$data['title'] = 'courses list';
+		$data['pagenum'] = $pagenum;
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('course/page', $data);
 		$this->load->view('templates/footer');
 	}
 

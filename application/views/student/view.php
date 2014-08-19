@@ -38,7 +38,7 @@
 				  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 				    <?php
 						foreach($course_names as $each){ ?>
-						<li role="presentation" id = "<?php echo $each['id']?>" title= "<?php echo $each['title']?>"><a role="menuitem" tabindex="-1" href="#"><?php echo $each['title']?></a></li>
+						<li role="presentation" id = "<?php echo $each['id']?>" title= "<?php echo $student_item['id']?>"><a role="menuitem" tabindex="-1" href="#"><?php echo $each['title']?></a></li>
 					<?php }?>
 				  </ul>
 				</div>

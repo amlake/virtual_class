@@ -6,11 +6,11 @@ class Student_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function get_students($id=FALSE)
+	public function get_students($id=FALSE,$pagenum=1)
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('student');
+			$query = $this->db->get('student',1,1*($pagenum-1));
 			$results = $query->result_array();
 			for ($i = 0; $i < count($results); ++$i) {
 			    #now, query `dept` table using major_id to select corresponding dept_name for display
