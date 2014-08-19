@@ -26,6 +26,7 @@ class Student extends CI_Controller {
 		$this->student_model->delete_student($id);
 		$this->load->helper('url');
 		redirect(base_url().'index.php/student/');
+		# TO -DO: ALSO UPDATE ENROLLMENT TABLE
 	}
 
 	public function edit_student($id) {
@@ -39,7 +40,16 @@ class Student extends CI_Controller {
 		redirect('student/view/'.$id);
 	}
 
-	public function view($id) #this is where the enroll student form will be
+	public function enroll($student_id) 
+	{
+		$course_data = $this->input->post();
+		$course_id = $course_data['id'];
+		echo "student_id: ".$student_id;
+		echo "  course_id: ". $course_id;
+		$this->enrollment_model->enroll_student($student_id,$course_id);
+	}
+
+	public function view($id)
 	{
 		$data['student_item'] = $this->student_model->get_students($id);
 		$name_for_title = $data['student_item']['firstname'].$data['student_item']['middlename'].$data['student_item']['lastname'];
@@ -54,10 +64,7 @@ class Student extends CI_Controller {
 		$data['dept_name'] = $data['student_item']['dept_name'];
 		$data['id'] = $id;
 
-		$course_name = $this->input->post('course_name');
-		# TO DO: query db, get course id
-		$course_id = "temp_MUST_CHANGE";
-		$data['course_id'] = $course_id;
+		$data['course_names'] = $this->enrollment_model->get_courses();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('student/view', $data);

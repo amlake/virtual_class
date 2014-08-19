@@ -25,6 +25,7 @@ class Course extends CI_Controller {
 		$this->course_model->delete_course($id);
 		$this->load->helper('url');
 		redirect(base_url().'index.php/course/');
+		# TO -DO: ALSO UPDATE ENROLLMENT TABLE
 	}
 
 	public function edit_course($id) {

@@ -3,28 +3,107 @@
 body{
     font-family: "Arial";
     font-size: 12px;
+    text-align:center;
 }
  
 #wrap{
-   width: 1024px;
+   text-align: center;
 }
- 
-ul.courses{
+
+.div-table{
+    display:table; 
+    border:0px solid #003399;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    border-spacing: 10px;
+}
+
+.div-table-row{
+    display:table-row;
+    width:auto;
+}
+
+.div-table-col{
+  float:left;
+  display:table-column;         
+  width:200px;         
+} 
+
+.div-table-col-head{
+  float:left;
+  display:table-column;         
+  width:200px;  
+  background-color:#ccc; 
+  font-size: 1.5em;        
+} 
+
+ul.students{
     list-style-type: none;
-    width: 525px;
+    width: 300px;
     margin: 0;
     padding: 0;
+    display: inline-block;
+    text-align: center;
+}
+ 
+ul.students li{
+    background: #eeeeee;
+    border: 1px solid #d3d3d3;
+    padding: 0px;
+    width: 100%;
+    height:120px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+ul.students h3{
+    margin: 0;
+    padding: 0px 0px 5px 0px;
+    font-size: 14px;
+}
+ 
+ul.students small{
+    display: block;
+}
+ 
+ul.students form fieldset{
+    border: 0px;
+}
+ 
+ul.students form label{
+    font-size: 12px;
+}
+ 
+ul.students form input[type=text]{
+    width: 18px;
+    background: #FFF;
+    border: 1px solid #d3d3d3;
+}
+
+ul.courses{
+    list-style-type: none;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
 }
  
 ul.courses li{
     background: #eeeeee;
     border: 1px solid #d3d3d3;
-    padding: 10px;
-    width: 200px;
-    height:100px;
+    padding: 0px;
+    width: 100%;
+    height:120px;
     margin-bottom: 10px;
     margin-right: 10px;
     text-align: center;
+    display: inline-block;
+    border-radius: 15px;
 }
 
 ul.courses h3{
@@ -51,44 +130,25 @@ ul.courses form input[type=text]{
     border: 1px solid #d3d3d3;
 }
 
-ul.students{
+ul.home_items{
     list-style-type: none;
-    width: 525px;
-    margin: 0;
+    width: 20%;
+    margin-top: 4%;
     padding: 0;
-}
- 
-ul.students li{
-    background: #eeeeee;
-    border: 1px solid #d3d3d3;
-    padding: 10px;
-    width: 200px;
-    height:100px;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    display: inline-block;
     text-align: center;
 }
-
-ul.students h3{
-    margin: 0;
-    padding: 0px 0px 5px 0px;
-    font-size: 14px;
-}
  
-ul.students small{
-    display: block;
-}
- 
-ul.students form fieldset{
-    border: 0px;
-}
- 
-ul.students form label{
-    font-size: 12px;
-}
- 
-ul.students form input[type=text]{
-    width: 18px;
-    background: #FFF;
+ul.home_items li{
+    background: #eeeeee;
     border: 1px solid #d3d3d3;
+    padding: 0px;
+    width: 100%;
+    height:10%;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 15px;
 }
