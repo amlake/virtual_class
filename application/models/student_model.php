@@ -10,7 +10,7 @@ class Student_model extends CI_Model {
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('student',1,1*($pagenum-1));
+			$query = $this->db->get('student',3,3*($pagenum-1));
 			$results = $query->result_array();
 			for ($i = 0; $i < count($results); ++$i) {
 			    #now, query `dept` table using major_id to select corresponding dept_name for display
@@ -78,10 +78,6 @@ class Student_model extends CI_Model {
 		return $this->db->insert('student', $data);
 	}
 	}
-
-	#public function get_dept_name($id) {
-	#
-	#}
 
 	public function delete_student($id) {
 		$this->db->delete('student', array('id' => $id));

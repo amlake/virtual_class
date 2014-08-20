@@ -6,6 +6,7 @@ class Course extends CI_Controller {
 		parent::__construct();
 		$this->load->model('course_model');
 		$this->load->model('dept_model');
+		$this->load->model('enrollment_model');
 		#$this->load->library('javascript');
 		#$this->load->library('jquery');
 	}
@@ -40,6 +41,11 @@ class Course extends CI_Controller {
 		# TO -DO: ALSO UPDATE ENROLLMENT TABLE
 	}
 
+	public function delete_student($course_id, $student_id) {
+		$this->enrollment_model->delete_student($course_id, $student_id);
+		redirect(base_url().'index.php/course/view/'.$course_id);
+	}
+
 	public function edit_course($id) {
 		$title = $this->input->post('title');
 		$data = array (
@@ -63,6 +69,16 @@ class Course extends CI_Controller {
 		$data['title'] = $data['course_item']['title'];
 		$data['dept_name'] = $data['course_item']['dept_name'];
 		$data['id'] = $id;
+		
+		$enrolled_students = $this->enrollment_model->get_students($id);
+		$my_array = array();
+
+		foreach ($enrolled_students as $item) {
+			# MUST QUERY STUDENT DB TO GET DEMOGRAPHIC INFO
+			$my_array[] = $item->student_id;
+	    }
+
+	    $data['enrolled_students'] = $my_array;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('course/view', $data);

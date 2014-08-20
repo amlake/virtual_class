@@ -19,3 +19,5 @@
 	<input type="submit" name="submit" value="Add course" />
 
 </form>
+
+<p><?php echo "<a href=\"javascript:history.go(-1)\">Go back</a>"; ?></p>

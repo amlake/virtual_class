@@ -152,3 +152,31 @@ ul.home_items li{
     font-size: 30px;
     border-radius: 15px;
 }
+
+#wrap1{
+   text-align: center;
+}
+
+ul.enrolled_students{
+    list-style-type: none;
+    width: 20%;
+    margin-top: 2%;
+    margin-left: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+}
+ 
+ul.enrolled_students li{
+    background: #00FFFF;
+    border: 1px solid #d3d3d3;
+    padding: 0px;
+    width: 60%;
+    height:10%;
+    margin-bottom: 23%;
+    margin-right: 0px;
+    text-align: center;
+    display: inline-block;
+    font-size: 0.8em;
+    border-radius: 15px;
+}

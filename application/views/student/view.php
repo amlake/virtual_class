@@ -46,7 +46,7 @@
 		</div>
 
 		<p><a href="<?php echo base_url();?>index.php/student/delete/<?php echo $student_item['id'] ?>">Delete student</a> </p>
-		<p><a href="<?php echo base_url();?>index.php/student">Go back</a> </p>
+		<p><?php echo "<a href=\"javascript:history.go(-1)\">Go back</a>"; ?></p>
 	</div>
 </div>
  
