@@ -84,7 +84,7 @@ CREATE TABLE `enrollment` (
   PRIMARY KEY (`id`),
   KEY `student_id` (`student_id`),
   KEY `course_id` (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `enrollment` (
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
-INSERT INTO `enrollment` VALUES (1,6,35),(2,6,35),(3,6,35),(4,6,34),(5,6,37),(6,6,34),(7,6,35),(8,6,34);
+INSERT INTO `enrollment` VALUES (23,4,35),(32,3,37),(36,3,37),(45,4,35),(46,3,37),(49,4,35),(50,4,37),(51,4,38),(52,5,37),(54,4,35);
 /*!40000 ALTER TABLE `enrollment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `student` (
   PRIMARY KEY (`id`),
   KEY `major_id` (`major_id`),
   CONSTRAINT `student_ibfk_1` FOREIGN KEY (`major_id`) REFERENCES `dept` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (3,'Allie','0','0',NULL,1),(4,'Aaron','0','0',NULL,2),(5,'Bess','0','0',NULL,1);
+INSERT INTO `student` VALUES (3,'Allie','0','0',NULL,1),(4,'Aaron','0','0',NULL,2),(5,'Bess','0','0',NULL,1),(6,'Rachel','0','0',NULL,2),(7,'Joe','0','0',NULL,1),(8,'Alex','0','0',NULL,1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -164,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-19 13:34:41
+-- Dump completed on 2014-08-20  8:36:21
