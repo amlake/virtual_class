@@ -40,15 +40,23 @@ class Student extends CI_Controller {
 		# TO -DO: ALSO UPDATE ENROLLMENT TABLE
 	}
 
-	public function edit_student($id) {
+	public function edit_student() {
+		$id = $this->input->post('studentid');
 		$firstname = $this->input->post('firstname');
+		$middlename = $this->input->post('middlename');
+		$lastname = $this->input->post('lastname');
+
+
 		$data = array (
-						'firstname' => $firstname
+						'firstname' => $firstname,
+						'middlename' => $middlename,
+						'lastname' => $lastname
 
 					   );
 		$this->db->where('id',$id);
 		$this->db->update('student',$data);
-		redirect('student/view/'.$id);
+
+		echo json_encode($data);
 	}
 
 	public function enroll() 
@@ -83,6 +91,18 @@ class Student extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function dept_check($str) {
+		$depts = $this->dept_model->get_depts(); # must check to make sure 'dept_name' is one of the hard-coded departments
+		if (!in_array($str, $depts))
+		{
+			$this->form_validation->set_message('dept_check', 'Invalid department name!');
+			return FALSE;
+		} else 
+		{
+			return TRUE;
+		}
+	}
+
 	public function create()
 	{
 		$this->load->helper('form');
@@ -90,8 +110,11 @@ class Student extends CI_Controller {
 
 		$data['title'] = 'Add a student';
 
-		$this->form_validation->set_rules('firstname', 'First Name', 'required');
-		# + MORE
+		$this->form_validation->set_rules('firstname', 'First name', 'required');
+		$this->form_validation->set_rules('lastname', 'Last name', 'required');
+		$this->form_validation->set_rules('dept_name', 'Major', 'required');
+
+		$this->form_validation->set_rules('dept_name', 'Department', 'callback_dept_check');
 
 
 		if ($this->form_validation->run() === FALSE)

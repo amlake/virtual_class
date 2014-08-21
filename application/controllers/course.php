@@ -7,6 +7,7 @@ class Course extends CI_Controller {
 		$this->load->model('course_model');
 		$this->load->model('dept_model');
 		$this->load->model('enrollment_model');
+		$this->load->model('student_model');
 		#$this->load->library('javascript');
 		#$this->load->library('jquery');
 	}
@@ -71,11 +72,12 @@ class Course extends CI_Controller {
 		$data['id'] = $id;
 		
 		$enrolled_students = $this->enrollment_model->get_students($id);
+
 		$my_array = array();
 
 		foreach ($enrolled_students as $item) {
-			# MUST QUERY STUDENT DB TO GET DEMOGRAPHIC INFO
-			$my_array[] = $item->student_id;
+			$name = $this->student_model->get_name($item->student_id);
+			$my_array[] = $name;
 	    }
 
 	    $data['enrolled_students'] = $my_array;
@@ -83,6 +85,18 @@ class Course extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('course/view', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function dept_check($str) {
+		$depts = $this->dept_model->get_depts(); # must check to make sure 'dept_name' is one of the hard-coded departments
+		if (!in_array($str, $depts))
+		{
+			$this->form_validation->set_message('dept_check', 'Invalid department name!');
+			return FALSE;
+		} else 
+		{
+			return TRUE;
+		}
 	}
 
 	public function create()
@@ -93,7 +107,8 @@ class Course extends CI_Controller {
 		$data['title'] = 'Add a course';
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
-		# + dept and prof?
+		$this->form_validation->set_rules('dept_name', 'Department', 'required');
+		$this->form_validation->set_rules('dept_name', 'Department', 'callback_dept_check');
 
 
 		if ($this->form_validation->run() === FALSE)

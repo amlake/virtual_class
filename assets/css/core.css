@@ -171,12 +171,16 @@ ul.enrolled_students li{
     background: #00FFFF;
     border: 1px solid #d3d3d3;
     padding: 0px;
-    width: 60%;
-    height:10%;
+    width: 40%;
+    height:8%;
     margin-bottom: 23%;
     margin-right: 0px;
     text-align: center;
     display: inline-block;
     font-size: 0.8em;
     border-radius: 15px;
+}
+
+.success {
+    display: inline-block;
 }

@@ -10,7 +10,7 @@ class Course_model extends CI_Model {
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('course',1,1*($pagenum-1));
+			$query = $this->db->get('course',10,10*($pagenum-1));
 			$results = $query->result_array();
 			for ($i = 0; $i < count($results); ++$i) {
 			    #now, query `dept` table using dept_id to select corresponding dept_name for display
@@ -50,13 +50,6 @@ class Course_model extends CI_Model {
 		$this->load->helper('url');
 
 		$dept_name = $this->input->post('dept_name'); # must use 'dept_name' from form to query `dept` table for 'dept_id'
-
-		# perhaps should handle the department field in a better way / in a different place (not in course_model.php) ... COME BACK TO THIS 
-		$depts = $this->dept_model->get_depts(); # must check to make sure 'dept_name' is one of the hard-coded departments
-		if (!in_array($dept_name, $depts))
-		{
-			echo "<br> <br> <b>ERROR: Department name entered is not valid ... make a better error message if time.</b> ";
-		} else {
 		
 		$this->db->select('id');
 		$this->db->where('name', $dept_name);
@@ -76,10 +69,10 @@ class Course_model extends CI_Model {
 
 		return $this->db->insert('course', $data);
 	}
-	}
 
 	public function delete_course($id) {
 		$this->db->delete('course', array('id' => $id));
+		$this->db->delete('enrollment', array('course_id' => $id));
 	}
 
 }

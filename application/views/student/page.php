@@ -1,9 +1,10 @@
+
 <div id="wrap">
 	<ul class ="students">
 		<?php foreach ($students as $student_item): ?>
 		<li>
 
-		    <h2><?php echo $student_item['firstname'] ?></h2>
+		    <h2><?php echo $student_item['firstname'].' '.$student_item['middlename'].' '.$student_item['lastname'] ?></h2>
 		    <div class="main">
 		    	<?php echo "Major:" ?>
 		        <?php echo $student_item['dept_name'] ?>

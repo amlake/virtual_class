@@ -24,6 +24,7 @@
 
 	<p><a href="<?php echo base_url();?>index.php/course/delete/<?php echo $course_item['id'] ?>">Delete course</a> </p>
 	<p><?php echo "<a href=\"javascript:history.go(-1)\">Go back</a>"; ?></p>
+	<p><a href="<?php echo base_url();?>index.php/">Home</a> </p>
 </div>
 
 <div id="wrap1">
@@ -31,10 +32,8 @@
 		<h2> Enrolled students </h2>
 		<?php foreach ($enrolled_students as $student_item): ?>
 		<li>
-		    <h3><?php echo 'Student Name' ?></h3>
+		    <h5><?php echo $student_item ?></h5>
 		    <br>
-		    <!-- <h2><?php echo $student_item ?></h2> -->
-		    <p><a href="<?php echo base_url();?>index.php/student/view/<?php echo $student_item ?>">view / edit student </a></p>
 		    <p><a href="<?php echo base_url();?>index.php/course/delete_student/<?php echo $course_item['id'] ?>/<?php echo $student_item ?>">unenroll student</a> </p>
 		</li>
 		<?php endforeach ?>
