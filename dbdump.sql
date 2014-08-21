@@ -32,7 +32,7 @@ CREATE TABLE `course` (
   KEY `prof_id` (`prof_id`),
   CONSTRAINT `course_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `dept` (`id`) ON DELETE CASCADE,
   CONSTRAINT `course_ibfk_2` FOREIGN KEY (`prof_id`) REFERENCES `prof` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (34,'Photosynthesis',1,NULL),(35,'Neurobiology',1,NULL),(37,'Thermodynamics',2,NULL),(38,'Biology 101',1,NULL);
+INSERT INTO `course` VALUES (34,'Photosynthesis',1,NULL),(35,'Neurobiology',1,NULL),(37,'Thermodynamics',2,NULL),(38,'Biology 101',1,NULL),(39,'Quantum Mechanics',3,NULL),(41,'Milton',4,NULL),(43,'Data Structures',5,NULL),(44,'Fiction Writing',4,NULL),(45,'Real Analysis',6,NULL),(46,'Growing Mushrooms',7,NULL),(48,'Database Systems',5,NULL),(49,'PHP',5,NULL);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `dept` (
   `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `dept` (
 
 LOCK TABLES `dept` WRITE;
 /*!40000 ALTER TABLE `dept` DISABLE KEYS */;
-INSERT INTO `dept` VALUES (1,'Biology'),(2,'Chemistry');
+INSERT INTO `dept` VALUES (1,'Biology'),(2,'Chemistry'),(5,'Computer Science'),(4,'English'),(6,'Mathematics'),(7,'Mycology'),(3,'Physics'),(8,'Undeclared');
 /*!40000 ALTER TABLE `dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `enrollment` (
   PRIMARY KEY (`id`),
   KEY `student_id` (`student_id`),
   KEY `course_id` (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `enrollment` (
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
-INSERT INTO `enrollment` VALUES (23,4,35),(32,3,37),(36,3,37),(45,4,35),(46,3,37),(49,4,35),(50,4,37),(51,4,38),(52,5,37),(54,4,35);
+INSERT INTO `enrollment` VALUES (55,10,35),(56,10,34),(57,10,34),(59,14,41),(61,15,35),(62,16,43),(64,12,46);
 /*!40000 ALTER TABLE `enrollment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `student` (
   PRIMARY KEY (`id`),
   KEY `major_id` (`major_id`),
   CONSTRAINT `student_ibfk_1` FOREIGN KEY (`major_id`) REFERENCES `dept` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (3,'Allie','0','0',NULL,1),(4,'Aaron','0','0',NULL,2),(5,'Bess','0','0',NULL,1),(6,'Rachel','0','0',NULL,2),(7,'Joe','0','0',NULL,1),(8,'Alex','0','0',NULL,1);
+INSERT INTO `student` VALUES (10,'Allie','','Lake',NULL,1),(12,'Mushroom','','Lover',NULL,7),(13,'Dave','','McClung',NULL,3),(14,'Sarah','','Wingfield',NULL,4),(15,'Bobbi','','Brown',NULL,1),(16,'Grace','','Hopper',NULL,5),(17,'Joe','','Lake',NULL,8),(18,'John','','Doe',NULL,2),(19,'Augustin','','Cauchy',NULL,6),(20,'Alan','','Turing',NULL,5),(21,'TestStudent',NULL,'1',NULL,1),(22,'TestStudent',NULL,'2',NULL,1),(23,'TestStudent',NULL,'3',NULL,1),(24,'TestStudent',NULL,'4',NULL,1),(25,'TestStudent',NULL,'5',NULL,1),(26,'TestStudent',NULL,'6',NULL,1),(27,'TestStudent',NULL,'7',NULL,1),(28,'TestStudent',NULL,'8',NULL,1),(29,'TestStudent',NULL,'9',NULL,1),(30,'TestStudent',NULL,'10',NULL,1),(31,'TestStudent',NULL,'11',NULL,1),(32,'TestStudent',NULL,'12',NULL,1),(33,'TestStudent',NULL,'13',NULL,1),(34,'TestStudent',NULL,'14',NULL,1),(35,'TestStudent',NULL,'15',NULL,1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -164,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-20  8:36:21
+-- Dump completed on 2014-08-21 15:30:05
